@@ -1,11 +1,11 @@
 from utils.http_metods import Http_methods
+from config.config import BASE_URL, API_KEY
 """Методы для тестирования API гугл карт"""
 
-base_url = "https://rahulshettyacademy.com/"  # базовый урл
-key = "?key=qaclick123" #парамтер для всех
+
 #post_resurs = "/maps/api/place/add/json"  # рескрс метода пост
 
-class Google_meps_api():
+class GoogleMepsApi:
 
     """Метод для создания новой локации"""
     @staticmethod
@@ -28,7 +28,7 @@ class Google_meps_api():
         }
 
         post_resource = "/maps/api/place/add/json"
-        post_url = base_url + post_resource + key
+        post_url = BASE_URL + post_resource + API_KEY
         result_post = Http_methods.post(post_url, jsom_for_create_new_place)
         return result_post
 
@@ -38,7 +38,7 @@ class Google_meps_api():
     def get_new_place(place_id):
 
         get_resource = "/maps/api/place/get/json" # ресур метода гут
-        get_url = base_url + get_resource + key + "&place_id=" + place_id
+        get_url = BASE_URL + get_resource + API_KEY + "&place_id=" + place_id
         result_get = Http_methods.get(get_url)
         return result_get
 
@@ -47,7 +47,7 @@ class Google_meps_api():
     @staticmethod
     def put_new_place(place_id):
         put_resource = "/maps/api/place/update/json"  # ресур метода put
-        put_url = base_url + put_resource + key
+        put_url = BASE_URL + put_resource + API_KEY
         json_for_update_new_location = {
             "place_id": place_id,
             "address": "100 Lenina street, RU",
@@ -61,7 +61,7 @@ class Google_meps_api():
     @staticmethod
     def delete_new_place(place_id):
         delete_resource = "/maps/api/place/delete/json"  # ресур метода delete
-        delete_url = base_url + delete_resource + key
+        delete_url = BASE_URL + delete_resource + API_KEY
         json_for_delete_new_location = {
             "place_id": place_id
         }
