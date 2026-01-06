@@ -10,12 +10,10 @@ class ShoppingCart:
     def get_total_price(self):
         return sum(self.items.values())
 
-@pytest.fixture()
+@pytest.fixture(scope="function")
 def filled_cart():
     """Создаем и возвращаем корзину с двумя товарами."""
     cart = ShoppingCart()
-    cart.add_item("apple", price=10)
-    cart.add_item("banana", price=20)
     return cart
 
 def test_add_item(filled_cart):
@@ -24,3 +22,7 @@ def test_add_item(filled_cart):
 
 def test_get_total_price(filled_cart):
     assert filled_cart.get_total_price() == 30
+
+def test_some_db_operation(db_connection):
+    #==используется db_connection ====
+    assert True
