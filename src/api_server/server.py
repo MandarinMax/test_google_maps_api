@@ -177,6 +177,7 @@ class UserList(Resource):
         return serialize_data(new_user), 201
 
 # просто так 3 5 Feature: шаг 1 Rebase: шаг 2
+# rebase v2.0: шаг 1
 @ns.route('/users/<int:user_id>')
 @ns.response(404, 'User not found')
 @ns.param('user_id', 'The user identifier')
