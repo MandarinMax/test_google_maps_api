@@ -176,7 +176,7 @@ class UserList(Resource):
         users.append(new_user)
         return serialize_data(new_user), 201
 
-# просто так 2
+# просто так 3
 @ns.route('/users/<int:user_id>')
 @ns.response(404, 'User not found')
 @ns.param('user_id', 'The user identifier')
